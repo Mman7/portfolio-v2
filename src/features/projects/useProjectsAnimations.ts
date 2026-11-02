@@ -130,12 +130,6 @@ export function useProjectsAnimations(scope: RefObject<HTMLElement | null>) {
               defaults: { ease: "none" },
               scrollTrigger: tz(hero, "top top", "bottom top"),
             })
-            .to(q("[data-hero-bg]"), { scale: 1.25 }, 0)
-            .to(
-              q("[data-hero-clip]"),
-              { clipPath: "inset(12% 6% 0% 6% round 18px)" },
-              0,
-            )
             .to(q("[data-hero-copy]"), { yPercent: -25, opacity: 0 }, 0)
             .to(q("[data-hero-scroll]"), { y: 40, opacity: 0 }, 0);
 

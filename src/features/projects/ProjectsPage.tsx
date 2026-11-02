@@ -45,27 +45,12 @@ export function ProjectsPage() {
         id="top"
         data-hero
         aria-label="Projects hero"
-        className={`relative flex h-svh min-h-[600px] flex-col justify-end overflow-hidden pb-[72px] ${pad}`}
+        className={`relative flex h-[56svh] min-h-[420px] flex-col justify-end overflow-hidden pt-[120px] pb-[56px] ${pad}`}
       >
-        <div data-hero-clip className="absolute inset-0 overflow-hidden">
-          <div data-hero-bg className="absolute -inset-[4%]">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_70%_90%,rgb(70_100_170_/_40%),transparent_70%)]" />
-            <video
-              className="absolute inset-0 h-full w-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              aria-hidden="true"
-            >
-              <source src="/hero_bg_video.mp4" type="video/mp4" />
-            </video>
-          </div>
-          <div
-            aria-hidden="true"
-            className="absolute inset-0 bg-[linear-gradient(180deg,rgb(8_8_8_/_50%),rgb(8_8_8_/_10%)_40%,rgb(8_8_8_/_88%))]"
-          />
-        </div>
+        <div
+          aria-hidden="true"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_70%_100%,rgb(70_100_170_/_28%),transparent_70%)]"
+        />
 
         <div data-hero-copy className="relative flex flex-col gap-9">
           <h1 className="font-display text-[clamp(32px,7vw,112px)] leading-[.98] font-bold tracking-[-.04em] uppercase">
