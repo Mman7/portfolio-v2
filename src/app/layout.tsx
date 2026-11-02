@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { DM_Mono, Inter, Space_Grotesk, Syne } from "next/font/google";
+import { SmoothScroll } from "@/components/layout/SmoothScroll";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -43,6 +44,7 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${dmMono.variable} ${syne.variable}`}
     >
       <body className="min-h-screen overflow-x-hidden bg-background font-body text-foreground antialiased selection:bg-foreground selection:text-background">
+        <SmoothScroll />
         {children}
       </body>
     </html>

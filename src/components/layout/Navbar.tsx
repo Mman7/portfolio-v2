@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const links = [
   { label: "Home", href: "#top", pageHref: "/", id: "top" },
-  { label: "About", href: "#about", pageHref: "/#about", id: "about" },
+  { label: "About", href: "#about", pageHref: "/about", id: "about" },
   { label: "Projects", href: "#work", pageHref: "/projects", id: "work" },
   { label: "Contact", href: "#contact", pageHref: "/#contact", id: "contact" },
 ];
@@ -17,7 +17,7 @@ const activeUnderline =
   "after:absolute after:inset-x-0 after:bottom-0.5 after:h-px after:bg-foreground after:content-['']";
 
 type NavbarProps = {
-  page?: "home" | "projects";
+  page?: "home" | "projects" | "about";
 };
 
 export function Navbar({ page = "home" }: NavbarProps) {
@@ -44,7 +44,7 @@ export function Navbar({ page = "home" }: NavbarProps) {
   }, []);
 
   const closeMenu = () => setIsOpen(false);
-  const activeId = isHome ? active : "work";
+  const activeId = isHome ? active : page === "about" ? "about" : "work";
 
   return (
     <header
@@ -75,7 +75,7 @@ export function Navbar({ page = "home" }: NavbarProps) {
           <a
             key={link.label}
             className={`${linkClass} ${activeId === link.id ? `text-foreground ${activeUnderline}` : ""}`}
-            href={isHome ? link.href : link.pageHref}
+            href={isHome && link.id === "top" ? link.href : link.pageHref}
             onClick={closeMenu}
           >
             {link.label}
