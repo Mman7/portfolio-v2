@@ -1,18 +1,142 @@
 export type Project = {
   name: string;
   description: string;
+  summary?: string;
+  status?: string;
+  stack?: string[];
+  highlights?: string[];
+  featured?: boolean;
+  img?: string;
 };
 
 export type BioPart = {
   text: string;
   strong?: boolean;
 };
-
+// TODO add the img src
 export const projects: Project[] = [
-  { name: "Komorebi", description: "E-commerce platform" },
-  { name: "PocketTogether", description: "Shared expense management" },
-  { name: "QuizThis", description: "Quiz application" },
+  {
+    name: "Komorebi",
+    description: "E-commerce platform",
+    summary:
+      "A full-stack e-commerce web application covering the storefront, Stripe payments, and an admin dashboard for products, categories, and orders.",
+    status: "Completed",
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Node.js",
+      "Express.js",
+      "REST API",
+      "PostgreSQL",
+      "Prisma",
+      "Stripe",
+      "Docker",
+      "Zustand",
+      "TanStack Query",
+    ],
+    highlights: [
+      "Product browsing and shopping cart",
+      "Wishlist",
+      "Checkout and payment processing",
+      "Stripe PaymentIntent integration",
+      "Stripe webhooks for order fulfillment",
+      "Inventory reservation",
+      "Order management",
+      "Admin dashboard with product and category CRUD",
+      "Customer and inventory management",
+    ],
+    featured: true,
+    img: "https://images.pexels.com/photos/34169628/pexels-photo-34169628.jpeg",
+  },
+  {
+    name: "PocketTogether",
+    description: "Shared expense management",
+    summary:
+      "A Flutter app for shared expenses: create rooms, invite members with codes, and track spending together.",
+    status: "Ongoing",
+    stack: [
+      "Flutter",
+      "Dart",
+      "Firebase Authentication",
+      "Cloud Firestore",
+      "Firebase Cloud Functions",
+      "Firebase Cloud Messaging (FCM)",
+    ],
+    highlights: [
+      "User registration and login",
+      "Create and join shared rooms",
+      "Invite codes for joining rooms",
+      "Record daily expenses",
+      "Track room members",
+      "Shared expense history",
+      "Individual and room-level spending statistics",
+      "Monthly and lifetime totals",
+      "Room activity page",
+    ],
+    featured: true,
+  },
+  {
+    name: "QuizThis",
+    description: "Quiz application",
+    summary:
+      "An interactive quiz application focused on programming knowledge.",
+    status: "Completed",
+    stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    featured: true,
+  },
+  {
+    name: "Notely",
+    description: "Notes application",
+    summary:
+      "A note-taking application for creating and managing notes with rich-text editing.",
+    status: "Completed",
+    stack: ["Flutter", "Dart", "Local storage", "Rich-text editing"],
+  },
+  {
+    name: "Pokémon Index",
+    description: "Pokémon information app",
+    summary:
+      "A Pokémon information application that retrieves and displays data from an external API.",
+    status: "Completed",
+    stack: ["React", "External API integration", "TanStack Query"],
+  },
+  {
+    name: "Tomato Clock",
+    description: "Pomodoro timer",
+    summary: "A productivity application based on the Pomodoro technique.",
+    status: "Completed",
+    stack: ["Flutter", "Dart", "Timer functionality", "Local notifications"],
+  },
+  {
+    name: "JKLM Clone",
+    description: "Web game",
+    status: "Built",
+  },
+  {
+    name: "Developer Portfolio",
+    description: "Personal portfolio website",
+    summary:
+      "A cinematic, black-and-white portfolio with scroll-driven project showcases and animated section transitions.",
+    stack: [
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "GSAP",
+      "ScrollTrigger",
+    ],
+    highlights: [
+      "Scroll-driven project showcases",
+      "Animated section transitions",
+      "Layered backgrounds and parallax effects",
+      "Responsive layouts",
+    ],
+  },
 ];
+
+export const featuredProjects = projects.filter((project) => project.featured);
 
 export const technologyGroups = [
   {

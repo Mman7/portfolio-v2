@@ -3,10 +3,10 @@
 import { useEffect, useState } from "react";
 
 const links = [
-  { label: "Home", href: "#top", id: "top" },
-  { label: "About", href: "#about", id: "about" },
-  { label: "Projects", href: "#work", id: "work" },
-  { label: "Contact", href: "#contact", id: "contact" },
+  { label: "Home", href: "#top", pageHref: "/", id: "top" },
+  { label: "About", href: "#about", pageHref: "/#about", id: "about" },
+  { label: "Projects", href: "#work", pageHref: "/projects", id: "work" },
+  { label: "Contact", href: "#contact", pageHref: "/#contact", id: "contact" },
 ];
 
 const sectionOrder = ["top", "work", "about", "contact"];
@@ -16,7 +16,12 @@ const linkClass =
 const activeUnderline =
   "after:absolute after:inset-x-0 after:bottom-0.5 after:h-px after:bg-foreground after:content-['']";
 
-export function Navbar() {
+type NavbarProps = {
+  page?: "home" | "projects";
+};
+
+export function Navbar({ page = "home" }: NavbarProps) {
+  const isHome = page === "home";
   const [isOpen, setIsOpen] = useState(false);
   const [isSolid, setIsSolid] = useState(false);
   const [active, setActive] = useState("top");
@@ -39,6 +44,7 @@ export function Navbar() {
   }, []);
 
   const closeMenu = () => setIsOpen(false);
+  const activeId = isHome ? active : "work";
 
   return (
     <header
@@ -46,7 +52,7 @@ export function Navbar() {
     >
       <a
         className="font-brand text-[18px] font-extrabold tracking-[.04em]"
-        href="#top"
+        href={isHome ? "#top" : "/"}
         onClick={closeMenu}
       >
         ERIC MAN
@@ -67,9 +73,9 @@ export function Navbar() {
       >
         {links.map((link) => (
           <a
-            key={link.href}
-            className={`${linkClass} ${active === link.id ? `text-foreground ${activeUnderline}` : ""}`}
-            href={link.href}
+            key={link.label}
+            className={`${linkClass} ${activeId === link.id ? `text-foreground ${activeUnderline}` : ""}`}
+            href={isHome ? link.href : link.pageHref}
             onClick={closeMenu}
           >
             {link.label}
