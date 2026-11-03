@@ -71,6 +71,16 @@ export const metadata: Metadata = {
   },
 };
 
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: SITE_NAME,
+  url: SITE_URL,
+  jobTitle: "Full-Stack Developer",
+  description:
+    "Eric Man is an independent developer and product builder turning ideas into real-world products.",
+};
+
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
@@ -80,6 +90,10 @@ export default function RootLayout({
       className={`${spaceGrotesk.variable} ${inter.variable} ${dmMono.variable} ${syne.variable}`}
     >
       <body className="min-h-screen bg-background font-body text-foreground antialiased selection:bg-foreground selection:text-background">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+        />
         <SmoothScroll />
         {/* Clip horizontal overflow here (not on body/html, which mobile browsers still pan) */}
         <div className="overflow-x-clip">{children}</div>
