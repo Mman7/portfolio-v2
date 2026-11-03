@@ -65,7 +65,7 @@ export function ProjectsPage() {
             <a className={`${btn} ${btnPrimary}`} href="#showcase">
               View Projects ↓
             </a>
-            <Link className={btn} href="/#contact">
+            <Link className={btn} href="/contact">
               Get in Touch ↗
             </Link>
           </div>
@@ -150,12 +150,34 @@ export function ProjectsPage() {
                       ))}
                     </ul>
                   )}
-                  <Link
-                    className={`${btn} ${btnPrimary} mt-8`}
-                    href={`/projects/${toSlug(project.name)}`}
-                  >
-                    View Case Study ↗
-                  </Link>
+                  <div className="mt-8 flex flex-wrap gap-3">
+                    <Link
+                      className={`${btn} ${btnPrimary}`}
+                      href={`/projects/${toSlug(project.name)}`}
+                    >
+                      View Case Study ↗
+                    </Link>
+                    {project.repoUrl && (
+                      <a
+                        className={btn}
+                        href={project.repoUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Github ↗
+                      </a>
+                    )}
+                    {project.liveUrl && (
+                      <a
+                        className={btn}
+                        href={project.liveUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        Live ↗
+                      </a>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>
@@ -288,7 +310,7 @@ export function ProjectsPage() {
                 LinkedIn ↗
               </a>
             </div>
-            <Link className={`${btn} ${btnPrimary}`} href="/#contact">
+            <Link className={`${btn} ${btnPrimary}`} href="/contact">
               Get in Touch ↗
             </Link>
           </div>

@@ -7,6 +7,8 @@ export type Project = {
   highlights?: string[];
   featured?: boolean;
   img?: string;
+  repoUrl?: string;
+  liveUrl?: string;
 };
 
 export type BioPart = {
@@ -14,6 +16,7 @@ export type BioPart = {
   strong?: boolean;
 };
 // TODO add the img src
+// TODO add repoUrl and liveUrl to projects where applicable
 export const projects: Project[] = [
   {
     name: "Komorebi",
@@ -204,7 +207,7 @@ export const aboutTimeline = [
 ];
 
 export const contact = {
-  email: "hello@example.com",
-  github: "https://github.com/",
-  linkedIn: "https://www.linkedin.com/",
+  email: "youzai0427@gmail.com",
+  github: "https://github.com/Mman7",
+  linkedIn: "https://www.linkedin.com/in/man-yee-you-2aa13b159/",
 };

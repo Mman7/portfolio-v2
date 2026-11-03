@@ -6,10 +6,8 @@ const links = [
   { label: "Home", href: "#top", pageHref: "/", id: "top" },
   { label: "About", href: "#about", pageHref: "/about", id: "about" },
   { label: "Projects", href: "#work", pageHref: "/projects", id: "work" },
-  { label: "Contact", href: "#contact", pageHref: "/#contact", id: "contact" },
+  { label: "Contact", href: "#contact", pageHref: "/contact", id: "contact" },
 ];
-
-const sectionOrder = ["top", "work", "about", "contact"];
 
 const linkClass =
   "relative py-2 text-sm transition-colors hover:text-foreground";
@@ -17,34 +15,25 @@ const activeUnderline =
   "after:absolute after:inset-x-0 after:bottom-0.5 after:h-px after:bg-foreground after:content-['']";
 
 type NavbarProps = {
-  page?: "home" | "projects" | "about";
+  page?: "home" | "projects" | "about" | "contact";
 };
 
 export function Navbar({ page = "home" }: NavbarProps) {
   const isHome = page === "home";
   const [isOpen, setIsOpen] = useState(false);
   const [isSolid, setIsSolid] = useState(false);
-  const [active, setActive] = useState("top");
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsSolid(window.scrollY > 80);
-      const line = window.innerHeight * 0.55;
-      let current = "top";
-      for (const id of sectionOrder) {
-        const element = document.getElementById(id);
-        if (element && element.getBoundingClientRect().top <= line)
-          current = id;
-      }
-      setActive(current);
-    };
+    const handleScroll = () => setIsSolid(window.scrollY > 80);
     handleScroll();
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const closeMenu = () => setIsOpen(false);
-  const activeId = isHome ? active : page === "about" ? "about" : "work";
+  const activeId = isHome
+    ? null
+    : { about: "about", contact: "contact", projects: "work" }[page];
 
   return (
     <header

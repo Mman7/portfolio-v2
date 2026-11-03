@@ -418,7 +418,7 @@ export function AboutPage() {
           <Link data-end-link className={endLink} href="/projects">
             View Projects <span aria-hidden="true">↗</span>
           </Link>
-          <Link data-end-link className={endLink} href="/#contact">
+          <Link data-end-link className={endLink} href="/contact">
             Let’s Talk <span aria-hidden="true">↗</span>
           </Link>
         </div>

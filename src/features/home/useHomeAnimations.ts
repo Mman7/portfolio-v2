@@ -4,6 +4,10 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import type { RefObject } from "react";
+import {
+  INTRO_EXIT_EVENT,
+  INTRO_SELECTOR,
+} from "@/components/intro/introEvents";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -71,9 +75,15 @@ export function useHomeAnimations(scope: RefObject<HTMLElement | null>) {
             );
           };
 
-          // Hero entrance
-          gsap
-            .timeline({ defaults: { ease: "power3.out" } })
+          // Hero entrance (waits for the starfield intro to exit)
+          const introPending = !!document.querySelector(
+            `${INTRO_SELECTOR}:not([data-state="done"])`,
+          );
+          const heroIn = gsap
+            .timeline({
+              defaults: { ease: "power3.out" },
+              paused: introPending,
+            })
             .fromTo(
               qa("[data-hero] [data-ln] > span"),
               { yPercent: 110 },
@@ -86,6 +96,9 @@ export function useHomeAnimations(scope: RefObject<HTMLElement | null>) {
               0.8,
             )
             .from(q("[data-hero-scroll]"), { opacity: 0, duration: 0.8 }, 1.2);
+          const playHero = () => heroIn.play();
+          if (introPending)
+            window.addEventListener(INTRO_EXIT_EVENT, playHero, { once: true });
 
           // Hero scroll
           const hero = q("#top");
@@ -443,7 +456,10 @@ export function useHomeAnimations(scope: RefObject<HTMLElement | null>) {
             },
           );
 
-          return () => removePointer?.();
+          return () => {
+            removePointer?.();
+            window.removeEventListener(INTRO_EXIT_EVENT, playHero);
+          };
         },
       );
 

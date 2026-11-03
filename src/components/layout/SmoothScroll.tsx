@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Lenis from "lenis";
 import { useEffect } from "react";
+import { smoothScroll } from "@/lib/smoothScroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,6 +13,7 @@ export function SmoothScroll() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const lenis = new Lenis();
+    smoothScroll.current = lenis;
     const handleScroll = () => ScrollTrigger.update();
     const handleTick = (time: number) => lenis.raf(time * 1000);
 
@@ -21,6 +23,7 @@ export function SmoothScroll() {
 
     return () => {
       gsap.ticker.remove(handleTick);
+      smoothScroll.current = null;
       lenis.destroy();
     };
   }, []);

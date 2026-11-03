@@ -8,21 +8,22 @@ import {
   bio,
   contact,
   engineeringPrinciples,
-  featuredProjects,
   howIWork,
+  projects,
   technologyGroups,
 } from "./data";
 import { useHomeAnimations } from "./useHomeAnimations";
 import { WhatIBuild } from "./WhatIBuild";
-import {
-  btn,
-  btnPrimary,
-  headingClass,
-  lineClass,
-  pad,
-  section,
-} from "@/lib/styles";
 
+const pad = "px-[clamp(20px,4.5vw,64px)]";
+const section = `${pad} py-[140px] max-[767px]:py-24`;
+const lineClass = "block overflow-hidden pb-[.1em]";
+const headingClass =
+  "font-display font-semibold leading-none tracking-[-.04em] text-[clamp(36px,6.4vw,100px)]";
+const btn =
+  "inline-flex min-h-12 items-center justify-center rounded-[2px] border border-[#444] px-7 text-[15px] font-medium transition-[background-color,border-color,translate] duration-300 hover:-translate-y-0.5 hover:border-foreground";
+const btnPrimary =
+  "border-foreground bg-foreground text-background hover:border-[#c9c6c0] hover:bg-[#c9c6c0]";
 const fieldLabel =
   "flex flex-col gap-1.5 font-mono text-xs uppercase tracking-[.1em] text-muted";
 const fieldInput =
@@ -164,7 +165,7 @@ export function HomePage() {
             <span className="block">Things I’ve brought to life.</span>
           </span>
         </h2>
-        {featuredProjects.map((project, index) => {
+        {projects.slice(0, 3).map((project, index) => {
           const reverse = index % 2 === 1;
           return (
             <article
