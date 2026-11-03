@@ -88,7 +88,7 @@ export function AboutPage() {
         id="turn"
         data-turn
         aria-label="The turning point"
-        className={`relative grid grid-cols-2 gap-[clamp(32px,6vw,96px)] border-t border-line py-[140px] max-[767px]:grid-cols-1 max-[767px]:py-24 ${pad}`}
+        className={`relative grid grid-cols-2 gap-[clamp(32px,6vw,96px)] border-t border-line py-35 max-[767px]:grid-cols-1 max-[767px]:py-24 ${pad}`}
       >
         <div className="sticky top-27.5 self-start max-[767px]:static">
           <h2
