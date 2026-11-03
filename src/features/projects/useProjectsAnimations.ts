@@ -50,11 +50,16 @@ export function useProjectsAnimations(scope: RefObject<HTMLElement | null>) {
 
       media.add(
         {
-          mobile: "(max-width: 767px)",
+          // Always-true query: the callback otherwise skips touch tablets over 1023px
+          all: "all",
+          mobile: "(max-width: 1023px)",
           fine: "(hover: hover) and (pointer: fine)",
         },
         (context) => {
-          const { mobile, fine } = context.conditions as Record<string, boolean>;
+          const { mobile, fine } = context.conditions as Record<
+            string,
+            boolean
+          >;
 
           const k = mobile ? 0.5 : 1;
           const q = (selector: string, from: ParentNode = root) =>
