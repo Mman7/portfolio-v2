@@ -52,10 +52,7 @@ export function StarfieldIntro() {
       seen = sessionStorage.getItem(SEEN_KEY) === "1";
     } catch {}
 
-    const reduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
-    if (reduced || seen) {
+    if (seen) {
       finalize();
       announceExit();
       return;

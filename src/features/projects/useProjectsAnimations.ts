@@ -32,10 +32,7 @@ export function useProjectsAnimations(scope: RefObject<HTMLElement | null>) {
         );
         if (!button) return;
         const index = Number(button.dataset.scPick);
-        const behavior = window.matchMedia("(prefers-reduced-motion: reduce)")
-          .matches
-          ? "auto"
-          : "smooth";
+        const behavior = "smooth";
         const trigger = ScrollTrigger.getById("showcase");
         if (trigger?.animation) {
           const top =
@@ -53,16 +50,11 @@ export function useProjectsAnimations(scope: RefObject<HTMLElement | null>) {
 
       media.add(
         {
-          motion: "(prefers-reduced-motion: no-preference)",
           mobile: "(max-width: 767px)",
           fine: "(hover: hover) and (pointer: fine)",
         },
         (context) => {
-          const { motion, mobile, fine } = context.conditions as Record<
-            string,
-            boolean
-          >;
-          if (!motion) return;
+          const { mobile, fine } = context.conditions as Record<string, boolean>;
 
           const k = mobile ? 0.5 : 1;
           const q = (selector: string, from: ParentNode = root) =>

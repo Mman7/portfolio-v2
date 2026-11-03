@@ -19,7 +19,7 @@ export function useProjectDetailAnimations(
       const qa = (selector: string) =>
         Array.from(root.querySelectorAll<HTMLElement>(selector));
 
-      // Sidebar: active section and reading progress. Works with or without motion.
+      // Sidebar: active section and reading progress.
       const links = qa("[data-pd-link]");
       const navEl = q("[data-pd-nav]");
       const bar = q("[data-pd-bar]");
@@ -69,15 +69,10 @@ export function useProjectDetailAnimations(
       const media = gsap.matchMedia();
       media.add(
         {
-          motion: "(prefers-reduced-motion: no-preference)",
           mobile: "(max-width: 899px)",
         },
         (context) => {
-          const { motion, mobile } = context.conditions as Record<
-            string,
-            boolean
-          >;
-          if (!motion) return;
+          const { mobile } = context.conditions as Record<string, boolean>;
 
           const k = mobile ? 0.5 : 1;
           const scrub = (

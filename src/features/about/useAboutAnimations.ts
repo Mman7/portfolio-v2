@@ -18,25 +18,8 @@ export function useAboutAnimations(scope: RefObject<HTMLElement | null>) {
 
       ScrollTrigger.config({ ignoreMobileResize: true });
 
-      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-        root.querySelectorAll("video").forEach((video) => video.pause());
-      }
-
-      const media = gsap.matchMedia();
-
-      media.add(
-        {
-          motion: "(prefers-reduced-motion: no-preference)",
-          mobile: "(max-width: 767px)",
-        },
-        (context) => {
-          const { motion, mobile } = context.conditions as Record<
-            string,
-            boolean
-          >;
-          if (!motion) return;
-
-          const k = mobile ? 0.5 : 1;
+      const mobile = window.matchMedia("(max-width: 767px)").matches;
+      const k = mobile ? 0.5 : 1;
           const q = (selector: string, from: ParentNode = root) =>
             from.querySelector<HTMLElement>(selector);
           const qa = (selector: string, from: ParentNode = root) =>
@@ -329,11 +312,7 @@ export function useAboutAnimations(scope: RefObject<HTMLElement | null>) {
               scrollTrigger: tz(end, "top bottom", "bottom bottom"),
             },
           );
-        },
-      );
-
       document.fonts?.ready.then(() => ScrollTrigger.refresh());
-      return () => media.revert();
     },
     { scope },
   );

@@ -22,16 +22,11 @@ export function useHomeAnimations(scope: RefObject<HTMLElement | null>) {
 
       media.add(
         {
-          motion: "(prefers-reduced-motion: no-preference)",
           mobile: "(max-width: 767px)",
           fine: "(hover: hover) and (pointer: fine)",
         },
         (context) => {
-          const { motion, mobile, fine } = context.conditions as Record<
-            string,
-            boolean
-          >;
-          if (!motion) return;
+          const { mobile, fine } = context.conditions as Record<string, boolean>;
 
           const k = mobile ? 0.5 : 1;
           const q = (selector: string, from: ParentNode = root) =>
