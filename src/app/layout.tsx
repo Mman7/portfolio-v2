@@ -43,9 +43,10 @@ export default function RootLayout({
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${dmMono.variable} ${syne.variable}`}
     >
-      <body className="min-h-screen overflow-x-hidden bg-background font-body text-foreground antialiased selection:bg-foreground selection:text-background">
+      <body className="min-h-screen bg-background font-body text-foreground antialiased selection:bg-foreground selection:text-background">
         <SmoothScroll />
-        {children}
+        {/* Clip horizontal overflow here (not on body/html, which mobile browsers still pan) */}
+        <div className="overflow-x-clip">{children}</div>
       </body>
     </html>
   );

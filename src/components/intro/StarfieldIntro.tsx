@@ -39,6 +39,13 @@ export function StarfieldIntro() {
     };
     const announceExit = () =>
       window.dispatchEvent(new Event(INTRO_EXIT_EVENT));
+    // Blocks native touch/wheel scrolling of the page behind the overlay
+    const lockScroll = () => {
+      document.documentElement.style.overflow = "hidden";
+      // Keeps the scrollbar width so pins measured while locked match the unlocked layout
+      document.documentElement.style.scrollbarGutter = "stable";
+      root.style.touchAction = "none";
+    };
 
     const reduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
@@ -74,6 +81,7 @@ export function StarfieldIntro() {
     const exit = () => {
       if (exiting) return;
       exiting = true;
+      lockScroll();
       tl.scrollTrigger?.kill();
       // Killing the scrub trigger rewinds the timeline to progress 0 (edge-on text).
       // Re-apply the end pose without firing callbacks so the zoom starts from the reading view.
@@ -82,8 +90,9 @@ export function StarfieldIntro() {
       spacer.style.display = "none";
       smoothScroll.current?.scrollTo(0, { immediate: true, force: true });
       window.scrollTo(0, 0);
-      ScrollTrigger.refresh();
       smoothScroll.current?.stop();
+      // Done under the overlay so no re-measure lands while the user resumes scrolling
+      ScrollTrigger.refresh(true);
       gsap
         .timeline({
           onComplete: () => {
@@ -94,10 +103,17 @@ export function StarfieldIntro() {
             smoothScroll.current?.start();
           },
         })
-        .to(state, { zoom: 1, ease: "power2.in", duration: 1.8 }, 0)
-        .to(flash, { opacity: 1, ease: "power1.in", duration: 0.8 }, 1)
-        .add(announceExit, 1.8)
-        .to(root, { opacity: 0, duration: 0.7, ease: "power1.out" }, 1.8);
+        .to(state, { zoom: 1, ease: "power2.in", duration: 2.2 }, 0)
+        .to(flash, { opacity: 1, ease: "power1.in", duration: 1 }, 1.2)
+        .add(announceExit, 1.6)
+        .to(root, { opacity: 0, duration: 0.8, ease: "power1.out" }, 2.2);
+    };
+
+    // Holds the page where the intro ends so a fast scroll can't carry on behind the overlay
+    const holdAtEnd = () => {
+      if (exiting) return;
+      lockScroll();
+      smoothScroll.current?.stop();
     };
 
     const ctx = gsap.context(() => {
@@ -109,6 +125,7 @@ export function StarfieldIntro() {
             start: "top top",
             end: "bottom bottom",
             scrub: 1,
+            onLeave: holdAtEnd,
           },
         })
         .to(hint, { opacity: 0, duration: 0.4 }, 0)
@@ -134,6 +151,7 @@ export function StarfieldIntro() {
     // Skip: detach from scroll and play the remaining timeline, then exit
     skipRef.current = () => {
       if (exiting) return;
+      lockScroll();
       tl.scrollTrigger?.kill();
       gsap.to(tl, {
         progress: 1,
@@ -238,6 +256,9 @@ export function StarfieldIntro() {
     }
 
     function teardown() {
+      document.documentElement.style.overflow = "";
+      document.documentElement.style.scrollbarGutter = "";
+      root.style.touchAction = "";
       if (tick) gsap.ticker.remove(tick);
       tick = null;
       clearTimeout(fallback);

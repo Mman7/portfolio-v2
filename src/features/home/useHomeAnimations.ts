@@ -53,9 +53,10 @@ export function useHomeAnimations(scope: RefObject<HTMLElement | null>) {
             if (!el) return;
             gsap.fromTo(
               el.querySelectorAll("[data-ln] > span"),
-              { yPercent: 110 },
+              { yPercent: 110, y: 0 },
               {
                 yPercent: 0,
+                y: 0,
                 stagger,
                 ease: "none",
                 scrollTrigger: tz(el, start, end),
