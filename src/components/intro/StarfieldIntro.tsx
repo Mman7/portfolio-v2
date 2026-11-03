@@ -319,7 +319,7 @@ export function StarfieldIntro() {
             <button
               type="button"
               onClick={() => skipRef.current()}
-              className="cursor-pointer rounded-full border border-[#2a3a5c] px-[18px] py-2 text-sm text-[#c9dcff] transition-colors hover:border-[#7f93b8]"
+              className="cursor-pointer rounded-full border border-[#2a3a5c] px-4.5 py-2 text-sm text-[#c9dcff] transition-colors hover:border-[#7f93b8]"
             >
               Skip intro
             </button>

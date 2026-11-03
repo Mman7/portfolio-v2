@@ -54,11 +54,11 @@ function HeroMedia({ project }: { project: Project }) {
   return (
     <div
       data-frame
-      className="relative mt-14 aspect-[16/10] w-full overflow-hidden border border-line bg-surface max-[767px]:aspect-[4/3]"
+      className="relative mt-14 aspect-16/10 w-full overflow-hidden border border-line bg-surface max-[767px]:aspect-4/3"
     >
       <div
         {...(project.video ? {} : { "data-art": true })}
-        className={`absolute ${project.video ? "inset-0" : "-inset-[7%]"}`}
+        className={`absolute ${project.video ? "inset-0" : "inset-[-7%]"}`}
       >
         {project.video ? (
           <video
@@ -121,9 +121,9 @@ export function ProjectDetailPage({ project, detail, next }: Props) {
     <div
       ref={rootRef}
       style={{ "--pd-accent": accent } as React.CSSProperties}
-      className="mx-auto grid max-w-[1440px] grid-cols-[220px_minmax(0,1fr)] max-[899px]:block"
+      className="mx-auto grid max-w-360 grid-cols-[220px_minmax(0,1fr)] max-[899px]:block"
     >
-      <aside className="sticky top-[72px] flex h-[calc(100svh-72px)] flex-col justify-between self-start py-10 pl-[clamp(20px,2.2vw,32px)] max-[899px]:top-[calc(72px+env(safe-area-inset-top,0px))] max-[899px]:z-20 max-[899px]:h-auto max-[899px]:border-b max-[899px]:border-line max-[899px]:bg-background/95 max-[899px]:px-5 max-[899px]:py-3">
+      <aside className="sticky top-18 flex h-[calc(100svh-72px)] flex-col justify-between self-start py-10 pl-[clamp(20px,2.2vw,32px)] max-[899px]:top-[calc(72px+env(safe-area-inset-top,0px))] max-[899px]:z-20 max-[899px]:h-auto max-[899px]:border-b max-[899px]:border-line max-[899px]:bg-background/95 max-[899px]:px-5 max-[899px]:py-3">
         <div className="max-[899px]:hidden">
           <Link
             href="/projects"
@@ -139,7 +139,7 @@ export function ProjectDetailPage({ project, detail, next }: Props) {
         <nav
           data-pd-nav
           aria-label="Case study sections"
-          className="flex flex-col gap-0.5 max-[899px]:flex-row max-[899px]:gap-5 max-[899px]:overflow-x-auto max-[899px]:[scrollbar-width:none]"
+          className="flex flex-col gap-0.5 max-[899px]:flex-row max-[899px]:gap-5 max-[899px]:overflow-x-auto max-[899px]:scrollbar-none"
         >
           {sections.map((section, index) => (
             <a
@@ -147,9 +147,9 @@ export function ProjectDetailPage({ project, detail, next }: Props) {
               data-pd-link
               href={`#${section.id}`}
               onClick={(event) => jump(event, section.id)}
-              className="group flex gap-3 py-1.5 text-sm whitespace-nowrap text-muted transition-colors hover:text-foreground aria-[current=true]:text-foreground"
+              className="group flex gap-3 py-1.5 text-sm whitespace-nowrap text-muted transition-colors hover:text-foreground aria-current:text-foreground"
             >
-              <span className="pt-0.5 font-mono text-[11px] transition-colors group-aria-[current=true]:text-(--pd-accent)">
+              <span className="pt-0.5 font-mono text-[11px] transition-colors group-aria-current:text-(--pd-accent)">
                 {String(index + 1).padStart(2, "0")}
               </span>
               {section.label}
@@ -204,7 +204,7 @@ export function ProjectDetailPage({ project, detail, next }: Props) {
             {detail.stack.length > 0 && (
               <div>
                 <dt className={monoLabel}>Stack</dt>
-                <dd className="mt-1.5 font-display text-[15px] leading-[1.5]">
+                <dd className="mt-1.5 font-display text-[15px] leading-normal">
                   {detail.stack.join(" / ")}
                 </dd>
               </div>
@@ -320,7 +320,7 @@ export function ProjectDetailPage({ project, detail, next }: Props) {
             <div data-flow className="relative">
               <div
                 aria-hidden="true"
-                className="absolute top-0 bottom-0 left-[15px] w-0.5 bg-line"
+                className="absolute top-0 bottom-0 left-3.75 w-0.5 bg-line"
               >
                 <b
                   data-flow-fill
@@ -334,7 +334,7 @@ export function ProjectDetailPage({ project, detail, next }: Props) {
                     data-step
                     className="group relative max-w-[60ch] py-6"
                   >
-                    <span className="absolute top-7 -left-14 grid size-8 place-items-center rounded-full border border-line bg-surface font-mono text-[11px] text-muted transition-colors duration-300 group-data-[on]:border-transparent group-data-[on]:bg-(--pd-accent) group-data-[on]:text-background">
+                    <span className="absolute top-7 -left-14 grid size-8 place-items-center rounded-full border border-line bg-surface font-mono text-[11px] text-muted transition-colors duration-300 group-data-on:border-transparent group-data-on:bg-(--pd-accent) group-data-on:text-background">
                       {index + 1}
                     </span>
                     <h3 className="font-display text-[clamp(20px,2.2vw,28px)] font-semibold tracking-[-.02em]">
@@ -399,7 +399,7 @@ export function ProjectDetailPage({ project, detail, next }: Props) {
                     index === 0 ? "col-span-2 max-[767px]:col-span-1" : ""
                   }
                 >
-                  <div className="relative aspect-[16/9]">
+                  <div className="relative aspect-video">
                     <div
                       data-tile-mask
                       className="absolute inset-0 overflow-hidden border border-line bg-background"

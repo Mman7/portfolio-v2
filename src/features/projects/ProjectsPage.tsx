@@ -38,11 +38,11 @@ export function ProjectsPage() {
         id="top"
         data-hero
         aria-label="Projects hero"
-        className={`relative flex h-[56svh] min-h-[420px] flex-col justify-end overflow-hidden pt-[120px] pb-[56px] ${pad}`}
+        className={`relative flex h-[56svh] min-h-105 flex-col justify-end overflow-hidden pt-30 pb-14 ${pad}`}
       >
         <div
           aria-hidden="true"
-          className="absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_70%_100%,rgb(70_100_170_/_28%),transparent_70%)]"
+          className="absolute inset-0 bg-[radial-gradient(ellipse_70%_80%_at_70%_100%,rgb(70_100_170/28%),transparent_70%)]"
         />
 
         <div data-hero-copy className="relative flex flex-col gap-9">
@@ -79,13 +79,13 @@ export function ProjectsPage() {
         style={{ height: `${projects.length * 160}svh` }}
       >
         <div
-          className={`sticky top-0 flex h-svh items-center overflow-hidden ${pad} max-[767px]:items-start max-[767px]:pt-[max(10vh,5.5rem)] motion-reduce:relative motion-reduce:h-auto motion-reduce:py-[100px]`}
+          className={`sticky top-0 flex h-svh items-center overflow-hidden ${pad} max-[767px]:items-start max-[767px]:pt-[max(10vh,5.5rem)] motion-reduce:relative motion-reduce:h-auto motion-reduce:py-25`}
         >
           <div className="grid w-full grid-cols-[auto_minmax(0,1fr)_minmax(0,1.1fr)] items-center gap-[clamp(28px,4vw,72px)] max-[767px]:grid-cols-1 max-[767px]:gap-6 motion-reduce:gap-12">
             <nav
               data-sc-nav
               aria-label="Project index"
-              className="relative flex flex-col items-start gap-[clamp(8px,1.8vh,16px)] max-[767px]:flex-row max-[767px]:gap-5 max-[767px]:overflow-x-auto max-[767px]:pb-2 max-[767px]:[scrollbar-width:none]"
+              className="relative flex flex-col items-start gap-[clamp(8px,1.8vh,16px)] max-[767px]:flex-row max-[767px]:gap-5 max-[767px]:overflow-x-auto max-[767px]:pb-2 max-[767px]:scrollbar-none"
             >
               {projects.map((project, index) => (
                 <button
@@ -113,13 +113,13 @@ export function ProjectsPage() {
                 <div
                   key={project.name}
                   data-sc-detail
-                  className="max-w-[560px] [grid-area:1/1]"
+                  className="max-w-140 [grid-area:1/1]"
                 >
-                  <h2 className="font-display text-[clamp(30px,min(4.2vw,7.5vh),80px)] leading-[.95] font-bold tracking-[-.05em]">
+                  <h2 className="font-display text-[clamp(30px,min(4.2vw,7.5vh),80px)] leading-[.95] font-bold tracking-tighter">
                     {project.name}
                   </h2>
                   {project.status && (
-                    <p className="mt-5 font-mono text-xs tracking-[.1em] text-muted uppercase">
+                    <p className="mt-5 font-mono text-xs tracking-widest text-muted uppercase">
                       {project.status}
                     </p>
                   )}
@@ -188,19 +188,19 @@ export function ProjectsPage() {
             </div>
 
             <div className="flex flex-col gap-4 max-[767px]:order-2">
-              <div className="relative aspect-[16/10] w-full max-[767px]:aspect-[2/1] motion-reduce:flex motion-reduce:aspect-auto motion-reduce:flex-col motion-reduce:gap-6">
+              <div className="relative aspect-16/10 w-full max-[767px]:aspect-2/1 motion-reduce:flex motion-reduce:aspect-auto motion-reduce:flex-col motion-reduce:gap-6">
                 {projects.map((project, index) => (
                   <div
                     key={project.name}
                     data-sc-frame
-                    className="absolute inset-0 overflow-hidden border border-[#222] bg-surface motion-reduce:relative motion-reduce:aspect-[16/10]"
+                    className="absolute inset-0 overflow-hidden border border-[#222] bg-surface motion-reduce:relative motion-reduce:aspect-16/10"
                   >
                     <div
                       data-sc-art
                       className={
                         project.video
                           ? "absolute inset-0"
-                          : "absolute -inset-[8%]"
+                          : "absolute inset-[-8%]"
                       }
                       style={
                         project.img || project.video
@@ -261,10 +261,7 @@ export function ProjectsPage() {
         aria-label="Beyond the interface"
         className={`relative border-t border-line ${section}`}
       >
-        <h2
-          data-beyond-h
-          className={`mb-[100px] max-[767px]:mb-16 ${headingClass}`}
-        >
+        <h2 data-beyond-h className={`mb-25 max-[767px]:mb-16 ${headingClass}`}>
           <span data-ln className={lineClass}>
             <span className="block">I care about how things work.</span>
           </span>
@@ -289,7 +286,7 @@ export function ProjectsPage() {
               >
                 {item.title}
               </h3>
-              <p className="mt-4 max-w-[560px] text-lg text-[#aaa]">
+              <p className="mt-4 max-w-140 text-lg text-[#aaa]">
                 {item.description}
               </p>
             </div>
@@ -301,11 +298,11 @@ export function ProjectsPage() {
         id="contact"
         data-contact
         aria-label="Contact"
-        className={`relative flex min-h-screen flex-col justify-end gap-14 overflow-hidden border-t border-line pt-[140px] pb-[72px] ${pad}`}
+        className={`relative flex min-h-screen flex-col justify-end gap-14 overflow-hidden border-t border-line pt-35 pb-18 ${pad}`}
       >
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_100%,rgb(70_100_170_/_32%),transparent_70%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_100%,rgb(70_100_170/32%),transparent_70%)]"
         />
 
         <h2
@@ -321,7 +318,7 @@ export function ProjectsPage() {
         </h2>
 
         <div className="relative flex flex-col gap-12">
-          <p className="max-w-[560px] text-lg leading-[1.6] text-[#aaa]">
+          <p className="max-w-140 text-lg leading-[1.6] text-[#aaa]">
             I’m interested in meaningful challenges, interesting ideas, and
             opportunities to turn concepts into useful products.
           </p>

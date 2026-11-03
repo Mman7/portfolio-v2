@@ -105,16 +105,16 @@ export function ContactPage() {
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(8_8_8_/_50%),rgb(8_8_8_/_10%)_40%,rgb(8_8_8_/_88%))]"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgb(8_8_8/50%),rgb(8_8_8/10%)_40%,rgb(8_8_8/88%))]"
         />
         <div
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_80%_20%,rgb(127_156_245_/_14%),transparent_70%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_80%_20%,rgb(127_156_245/14%),transparent_70%)]"
         />
         <div
           data-spot
           aria-hidden="true"
-          className="pointer-events-none absolute left-0 top-0 size-[60vmax] rounded-full bg-[radial-gradient(closest-side,rgb(127_156_245_/_16%),transparent)] max-md:hidden"
+          className="pointer-events-none absolute left-0 top-0 size-[60vmax] rounded-full bg-[radial-gradient(closest-side,rgb(127_156_245/16%),transparent)] max-md:hidden"
         />
         <div data-hero-copy className="relative">
           <h1 className="font-display text-[clamp(56px,17vw,280px)] font-bold uppercase leading-[.86] tracking-[-.06em]">
@@ -147,7 +147,7 @@ export function ContactPage() {
         <p
           data-band-text
           aria-hidden="true"
-          className="w-max whitespace-nowrap font-display text-[clamp(56px,13vw,220px)] font-bold uppercase leading-none tracking-[-.05em] text-transparent [-webkit-text-stroke:1.5px_#3a3a3a]"
+          className="w-max whitespace-nowrap font-display text-[clamp(56px,13vw,220px)] font-bold uppercase leading-none tracking-tighter text-transparent [-webkit-text-stroke:1.5px_#3a3a3a]"
         >
           Every project starts with a message.
         </p>
@@ -156,7 +156,7 @@ export function ContactPage() {
       <section
         id="message"
         aria-label="Contact form"
-        className={`relative grid grid-cols-[1fr_1.1fr] gap-[clamp(32px,6vw,96px)] border-t border-line py-[140px] max-[900px]:grid-cols-1 max-[767px]:py-24 ${pad}`}
+        className={`relative grid grid-cols-[1fr_1.1fr] gap-[clamp(32px,6vw,96px)] border-t border-line py-35 max-[900px]:grid-cols-1 max-[767px]:py-24 ${pad}`}
       >
         <div className="self-start min-[901px]:sticky min-[901px]:top-27.5">
           <h2 className="font-display text-[clamp(38px,5.6vw,88px)] font-semibold leading-none tracking-[-.045em]">
@@ -179,7 +179,7 @@ export function ContactPage() {
           data-reveal-once
           noValidate
           onSubmit={handleSubmit}
-          className="flex max-w-[640px] flex-col gap-9"
+          className="flex max-w-160 flex-col gap-9"
         >
           <fieldset disabled={sending} className="contents">
             {contactFields.map((field) => {
@@ -230,7 +230,7 @@ export function ContactPage() {
               tabIndex={-1}
               autoComplete="off"
               aria-hidden="true"
-              className="absolute -left-[9999px] size-px opacity-0"
+              className="absolute left-[-9999px] size-px opacity-0"
             />
             <div data-field className="flex flex-col items-start gap-5">
               <button
@@ -275,7 +275,7 @@ export function ContactPage() {
 
       <section
         aria-label="Direct contact"
-        className={`border-t border-line pb-[120px] pt-24 max-[767px]:pb-20 ${pad}`}
+        className={`border-t border-line pb-30 pt-24 max-[767px]:pb-20 ${pad}`}
       >
         <h2 className="mb-10 font-mono text-xs uppercase tracking-[.2em] text-muted">
           Or reach me directly
@@ -327,7 +327,7 @@ export function ContactPage() {
         <div
           data-clip
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_100%,rgb(70_100_170_/_32%),transparent_70%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_100%,rgb(70_100_170/32%),transparent_70%)]"
         />
         <h2 className="relative font-display text-[clamp(34px,8.6vw,150px)] font-bold uppercase leading-[.92] tracking-[-.055em]">
           <span className="sr-only">

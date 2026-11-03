@@ -93,11 +93,11 @@ export function HomePage() {
         id="top"
         data-hero
         aria-label="Hero"
-        className={`relative flex h-svh min-h-[600px] flex-col justify-end overflow-hidden pb-[72px] ${pad}`}
+        className={`relative flex h-svh min-h-150 flex-col justify-end overflow-hidden pb-18 ${pad}`}
       >
         <div data-hero-clip className="absolute inset-0 overflow-hidden">
-          <div data-hero-bg className="absolute -inset-[4%]">
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_70%_90%,rgb(70_100_170_/_40%),transparent_70%)]" />
+          <div data-hero-bg className="absolute inset-[-4%]">
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_70%_90%,rgb(70_100_170/40%),transparent_70%)]" />
             <video
               className="absolute inset-0 h-full w-full object-cover md:object-contain"
               autoPlay
@@ -114,7 +114,7 @@ export function HomePage() {
             </video>
           </div>
           <div
-            className="absolute inset-0 bg-[linear-gradient(180deg,rgb(8_8_8_/_50%),rgb(8_8_8_/_10%)_40%,rgb(8_8_8_/_88%))]"
+            className="absolute inset-0 bg-[linear-gradient(180deg,rgb(8_8_8/50%),rgb(8_8_8/10%)_40%,rgb(8_8_8/88%))]"
             aria-hidden="true"
           />
         </div>
@@ -147,11 +147,11 @@ export function HomePage() {
         id="intro"
         data-intro
         aria-label="Introduction"
-        className={`relative flex min-h-screen items-center overflow-hidden border-t border-line py-[120px] ${pad}`}
+        className={`relative flex min-h-screen items-center overflow-hidden border-t border-line py-30 ${pad}`}
       >
         <div
           data-grid
-          className="pointer-events-none absolute inset-0 [background-image:linear-gradient(rgb(255_255_255_/_3.5%)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255_/_3.5%)_1px,transparent_1px)] [background-size:80px_80px]"
+          className="pointer-events-none absolute inset-0 bg-[linear-gradient(rgb(255_255_255/3.5%)_1px,transparent_1px),linear-gradient(90deg,rgb(255_255_255/3.5%)_1px,transparent_1px)] bg-size-[80px_80px]"
           aria-hidden="true"
         />
         <h2
@@ -175,10 +175,7 @@ export function HomePage() {
         aria-label="Selected projects"
         className={`relative border-t border-line ${section}`}
       >
-        <h2
-          data-work-h
-          className={`mb-[120px] max-[767px]:mb-16 ${headingClass}`}
-        >
+        <h2 data-work-h className={`mb-30 max-[767px]:mb-16 ${headingClass}`}>
           <span data-ln className={lineClass}>
             <span className="block">Things I’ve brought to life.</span>
           </span>
@@ -193,11 +190,11 @@ export function HomePage() {
             >
               <div
                 data-mf
-                className={`relative aspect-[16/10] w-[66%] overflow-hidden border border-[#222] bg-[#111] [grid-area:1/1] max-[767px]:w-full max-[767px]:aspect-[2/1] ${reverse ? "justify-self-end" : "justify-self-start"}`}
+                className={`relative aspect-16/10 w-[66%] overflow-hidden border border-[#222] bg-[#111] [grid-area:1/1] max-[767px]:w-full max-[767px]:aspect-2/1 ${reverse ? "justify-self-end" : "justify-self-start"}`}
               >
                 <div
                   data-mi
-                  className="absolute -inset-y-[10%] inset-x-0"
+                  className="absolute inset-y-[-10%] inset-x-0"
                   style={{
                     background: `radial-gradient(ellipse 70% 70% at ${25 + index * 25}% ${80 - index * 20}%, rgba(70,100,170,.42), transparent 70%), linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px)`,
                     backgroundSize: "auto, 48px 48px, 48px 48px",
@@ -228,9 +225,9 @@ export function HomePage() {
                 </div>
               </div>
               <div
-                className={`pointer-events-none relative z-[1] translate-y-[22%] self-end [grid-area:1/1] max-[767px]:mt-5 max-[767px]:translate-y-0 max-[767px]:!justify-self-start max-[767px]:[grid-area:2/1] ${reverse ? "justify-self-start" : "justify-self-end"}`}
+                className={`pointer-events-none relative z-1 translate-y-[22%] self-end [grid-area:1/1] max-[767px]:mt-5 max-[767px]:translate-y-0 max-[767px]:justify-self-start! max-[767px]:[grid-area:2/1] ${reverse ? "justify-self-start" : "justify-self-end"}`}
               >
-                <h3 className="font-display text-[clamp(44px,9vw,148px)] font-bold leading-[.95] tracking-[-.05em]">
+                <h3 className="font-display text-[clamp(44px,9vw,148px)] font-bold leading-[.95] tracking-tighter">
                   <span data-ln className={lineClass}>
                     <span className="block">
                       <a
@@ -264,10 +261,7 @@ export function HomePage() {
         aria-label="Engineering mindset"
         className={`relative border-t border-line ${section}`}
       >
-        <h2
-          data-eng-h
-          className={`mb-[120px] max-[767px]:mb-16 ${headingClass}`}
-        >
+        <h2 data-eng-h className={`mb-30 max-[767px]:mb-16 ${headingClass}`}>
           <span data-ln className={lineClass}>
             <span className="block">More than making it work.</span>
           </span>
@@ -306,10 +300,7 @@ export function HomePage() {
         aria-label="Technology"
         className={`relative border-t border-line ${section}`}
       >
-        <h2
-          data-tech-h
-          className={`mb-[100px] max-[767px]:mb-16 ${headingClass}`}
-        >
+        <h2 data-tech-h className={`mb-25 max-[767px]:mb-16 ${headingClass}`}>
           <span data-ln className={lineClass}>
             <span className="block">The tools behind the work.</span>
           </span>
@@ -322,7 +313,7 @@ export function HomePage() {
           >
             <p
               data-lb
-              className="pt-3.5 font-mono text-xs uppercase tracking-[.1em] text-muted max-[767px]:pb-4"
+              className="pt-3.5 font-mono text-xs uppercase tracking-widest text-muted max-[767px]:pb-4"
             >
               {group.label}
             </p>
@@ -342,7 +333,7 @@ export function HomePage() {
         <p
           data-fin
           aria-label="Tools matter. Understanding matters more."
-          className="mt-[140px] font-display text-[clamp(32px,6vw,88px)] font-semibold leading-[1.05] tracking-[-.04em] max-[767px]:mt-24"
+          className="mt-35 font-display text-[clamp(32px,6vw,88px)] font-semibold leading-[1.05] tracking-[-.04em] max-[767px]:mt-24"
         >
           <span className="text-muted">
             <span data-fw className="inline">
@@ -367,7 +358,7 @@ export function HomePage() {
       <section
         id="how"
         aria-label="How I work"
-        className="relative h-[260vh] border-t border-line max-[767px]:h-[220vh] motion-reduce:h-auto motion-reduce:py-[100px]"
+        className="relative h-[260vh] border-t border-line max-[767px]:h-[220vh] motion-reduce:h-auto motion-reduce:py-25"
       >
         <div
           data-how-stage
@@ -379,14 +370,14 @@ export function HomePage() {
                 <li key={stage.title}>
                   <div
                     data-hw
-                    className="flex items-baseline gap-5 font-display text-[clamp(34px,6.6vw,108px)] font-bold leading-none tracking-[-.05em] text-[#2e2e2e] max-[767px]:gap-3 motion-reduce:text-foreground"
+                    className="flex items-baseline gap-5 font-display text-[clamp(34px,6.6vw,108px)] font-bold leading-none tracking-tighter text-[#2e2e2e] max-[767px]:gap-3 motion-reduce:text-foreground"
                   >
-                    <small className="font-mono text-[clamp(12px,1.3vw,18px)] font-normal tracking-[.1em] text-muted">
+                    <small className="font-mono text-[clamp(12px,1.3vw,18px)] font-normal tracking-widest text-muted">
                       {`0${index + 1}`}
                     </small>
                     <span>{stage.title}</span>
                   </div>
-                  <p className="mb-6 mt-1.5 hidden max-w-[520px] text-lg text-[#aaa] motion-reduce:block">
+                  <p className="mb-6 mt-1.5 hidden max-w-130 text-lg text-[#aaa] motion-reduce:block">
                     {stage.description}
                   </p>
                 </li>
@@ -394,13 +385,13 @@ export function HomePage() {
             </ol>
             <div
               data-hdc
-              className="relative min-h-[150px] max-[767px]:min-h-[130px] motion-reduce:hidden"
+              className="relative min-h-37.5 max-[767px]:min-h-32.5 motion-reduce:hidden"
             >
               {howIWork.map((stage) => (
                 <p
                   data-hdd
                   key={stage.title}
-                  className="absolute left-0 top-0 max-w-[520px] text-[clamp(20px,2.2vw,32px)] leading-[1.35] tracking-[-.02em]"
+                  className="absolute left-0 top-0 max-w-130 text-[clamp(20px,2.2vw,32px)] leading-[1.35] tracking-[-.02em]"
                 >
                   {stage.description}
                 </p>
@@ -426,7 +417,7 @@ export function HomePage() {
       >
         <p
           data-mep
-          className="max-w-[1100px] font-display text-[clamp(26px,3.6vw,56px)] font-medium leading-[1.2] tracking-[-.035em] text-[#8a8a8a]"
+          className="max-w-275 font-display text-[clamp(26px,3.6vw,56px)] font-medium leading-[1.2] tracking-[-.035em] text-[#8a8a8a]"
         >
           <Words parts={bio} />
         </p>
@@ -444,7 +435,7 @@ export function HomePage() {
               />
               <i
                 aria-hidden="true"
-                className="absolute -top-1 left-0 block size-[7px] rounded-full bg-accent"
+                className="absolute -top-1 left-0 block size-1.75 rounded-full bg-accent"
               />
               {item}
             </li>
@@ -460,7 +451,7 @@ export function HomePage() {
       >
         <h2
           data-about-h
-          className="mb-[72px] font-display text-[clamp(44px,10vw,160px)] font-semibold leading-[.98] tracking-[-.05em]"
+          className="mb-18 font-display text-[clamp(44px,10vw,160px)] font-semibold leading-[.98] tracking-tighter"
         >
           <span data-ln className={lineClass}>
             <span className="block">A Different Path.</span>
@@ -474,7 +465,7 @@ export function HomePage() {
         </a>
         <p
           data-qt
-          className="mt-24 max-w-[1000px] font-display text-[clamp(28px,4.6vw,72px)] font-semibold leading-[1.08] tracking-[-.04em]"
+          className="mt-24 max-w-250 font-display text-[clamp(28px,4.6vw,72px)] font-semibold leading-[1.08] tracking-[-.04em]"
         >
           <Words
             parts={[
@@ -490,12 +481,12 @@ export function HomePage() {
         id="contact"
         data-contact
         aria-label="Contact"
-        className={`relative flex min-h-screen flex-col justify-end gap-14 overflow-hidden border-t border-line pb-[72px] pt-[140px] ${pad}`}
+        className={`relative flex min-h-screen flex-col justify-end gap-14 overflow-hidden border-t border-line pb-18 pt-35 ${pad}`}
       >
         <div
           data-glow
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_100%,rgb(70_100_170_/_32%),transparent_70%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_100%,rgb(70_100_170/32%),transparent_70%)]"
         />
         <h2
           data-big
@@ -503,7 +494,7 @@ export function HomePage() {
         >
           <span
             data-ln
-            className="-mb-[.06em] -mt-[.08em] block overflow-hidden pb-[.12em] pt-[.08em]"
+            className="mb-[-0.06em] mt-[-0.08em] block overflow-hidden pb-[.12em] pt-[.08em]"
           >
             <span className="block">Have an idea?</span>
           </span>
@@ -542,14 +533,14 @@ export function HomePage() {
             data-form
             noValidate
             onSubmit={handleSubmit}
-            className="flex flex-col gap-[18px]"
+            className="flex flex-col gap-4.5"
           >
             <input
               name="bot-field"
               tabIndex={-1}
               autoComplete="off"
               aria-hidden="true"
-              className="absolute -left-[9999px] size-px opacity-0"
+              className="absolute left-[-9999px] size-px opacity-0"
             />
             <label className={fieldLabel}>
               Name

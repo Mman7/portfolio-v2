@@ -105,7 +105,7 @@ export function AboutPage() {
           <div
             data-nums
             aria-hidden="true"
-            className="mt-[8vh] flex items-center gap-[2vw] font-display text-[clamp(80px,13vw,200px)] font-bold leading-none tracking-[-.05em] text-transparent [--sk:#333] [-webkit-text-stroke:1.5px_var(--sk)]"
+            className="mt-[8vh] flex items-center gap-[2vw] font-display text-[clamp(80px,13vw,200px)] font-bold leading-none tracking-tighter text-transparent [--sk:#333] [-webkit-text-stroke:1.5px_var(--sk)]"
           >
             <span>17</span>
             <svg
@@ -160,7 +160,7 @@ export function AboutPage() {
       >
         <div
           data-path-track
-          className="flex h-screen min-h-[640px] w-max items-center pr-[clamp(20px,4.5vw,64px)] motion-reduce:h-auto motion-reduce:w-full motion-reduce:flex-col motion-reduce:items-stretch motion-reduce:py-20"
+          className="flex h-screen min-h-160 w-max items-center pr-[clamp(20px,4.5vw,64px)] motion-reduce:h-auto motion-reduce:w-full motion-reduce:flex-col motion-reduce:items-stretch motion-reduce:py-20"
         >
           <div className="flex w-[min(60vw,820px)] flex-col justify-center pl-[clamp(20px,4.5vw,64px)] max-[899px]:w-[86vw] motion-reduce:w-full">
             <h2
@@ -184,12 +184,10 @@ export function AboutPage() {
                 {step.title}
               </h3>
               <div data-path-body className="flex flex-col gap-5">
-                <p className={`max-w-[420px] ${mutedText}`}>
-                  {step.description}
-                </p>
+                <p className={`max-w-105 ${mutedText}`}>{step.description}</p>
                 <ul className="flex flex-col gap-2 text-[15px] text-[#c9c6c0]">
                   {step.tags.map((tag) => (
-                    <li key={tag} className="border-b border-[#262626] pb-2">
+                    <li key={tag} className="border-b border-line pb-2">
                       {tag}
                     </li>
                   ))}
@@ -228,7 +226,7 @@ export function AboutPage() {
             </span>
           </h2>
           <div
-            className={`flex max-w-[560px] flex-col gap-[22px] text-[clamp(16px,1.3vw,19px)] leading-[1.8] ${mutedText}`}
+            className={`flex max-w-140 flex-col gap-5.5 text-[clamp(16px,1.3vw,19px)] leading-[1.8] ${mutedText}`}
           >
             {discipline.map((text) => (
               <p data-wr key={text}>
@@ -239,7 +237,7 @@ export function AboutPage() {
         </div>
         <div
           data-term
-          className="mx-auto mt-[120px] max-w-[860px] rounded-[2px] border border-[#2a2a2a] bg-surface p-[clamp(22px,4vw,48px)] font-mono text-[clamp(12px,1.3vw,15px)] leading-[2.2] text-[#777] max-[767px]:mt-[72px]"
+          className="mx-auto mt-30 max-w-215 rounded-xs border border-[#2a2a2a] bg-surface p-[clamp(22px,4vw,48px)] font-mono text-[clamp(12px,1.3vw,15px)] leading-[2.2] text-[#777] max-[767px]:mt-18"
         >
           <div>
             <span className="text-accent">$</span>{" "}
@@ -260,7 +258,7 @@ export function AboutPage() {
       <section
         id="how"
         aria-label="How I think"
-        className="relative h-[260vh] border-t border-line max-[767px]:h-[220vh] motion-reduce:h-auto motion-reduce:py-[100px]"
+        className="relative h-[260vh] border-t border-line max-[767px]:h-[220vh] motion-reduce:h-auto motion-reduce:py-25"
       >
         <div
           className={`sticky top-0 flex h-svh items-center overflow-hidden ${pad} max-[767px]:items-start max-[767px]:pt-[14vh] motion-reduce:relative motion-reduce:h-auto`}
@@ -271,25 +269,25 @@ export function AboutPage() {
                 <li key={item.title}>
                   <div
                     data-hw
-                    className="font-display text-[clamp(34px,6.2vw,100px)] font-bold leading-none tracking-[-.05em] text-[#2e2e2e] motion-reduce:text-foreground"
+                    className="font-display text-[clamp(34px,6.2vw,100px)] font-bold leading-none tracking-tighter text-[#2e2e2e] motion-reduce:text-foreground"
                   >
                     {item.title}
                   </div>
-                  <p className="mb-6 mt-1.5 hidden max-w-[520px] text-lg text-[#aaa] motion-reduce:block">
+                  <p className="mb-6 mt-1.5 hidden max-w-130 text-lg text-[#aaa] motion-reduce:block">
                     {item.description}
                   </p>
                 </li>
               ))}
             </ol>
             <div
-              className="relative min-h-[150px] max-[767px]:min-h-[130px] motion-reduce:hidden"
+              className="relative min-h-37.5 max-[767px]:min-h-32.5 motion-reduce:hidden"
               aria-hidden="true"
             >
               {principles.map((item) => (
                 <p
                   data-hdd
                   key={item.title}
-                  className="absolute left-0 top-0 max-w-[480px] text-[clamp(20px,2.2vw,32px)] leading-[1.35] tracking-[-.02em]"
+                  className="absolute left-0 top-0 max-w-120 text-[clamp(20px,2.2vw,32px)] leading-[1.35] tracking-[-.02em]"
                 >
                   {item.description}
                 </p>
@@ -334,17 +332,17 @@ export function AboutPage() {
             </div>
             <div
               aria-hidden="true"
-              className="absolute inset-0 bg-[linear-gradient(0deg,rgb(8_8_8_/_92%),rgb(8_8_8_/_30%)_55%,transparent)]"
+              className="absolute inset-0 bg-[linear-gradient(0deg,rgb(8_8_8/92%),rgb(8_8_8/30%)_55%,transparent)]"
             />
           </div>
           <div
             data-out-copy
             className={`absolute inset-x-0 bottom-[9svh] flex items-end justify-between gap-[5vw] max-[767px]:flex-col max-[767px]:items-start max-[767px]:gap-4 ${pad}`}
           >
-            <h2 className="max-w-[8em] font-display text-[clamp(38px,6.4vw,104px)] font-semibold leading-[.98] tracking-[-.05em]">
+            <h2 className="max-w-[8em] font-display text-[clamp(38px,6.4vw,104px)] font-semibold leading-[.98] tracking-tighter">
               There’s more to life than the screen.
             </h2>
-            <div className="flex max-w-[460px] flex-col gap-4 text-[#d5d2cc]">
+            <div className="flex max-w-115 flex-col gap-4 text-[#d5d2cc]">
               {outside.map((text) => (
                 <p key={text}>{text}</p>
               ))}
@@ -360,7 +358,7 @@ export function AboutPage() {
       >
         <h2
           data-future-h
-          className="font-display text-[clamp(40px,8vw,140px)] font-semibold leading-none tracking-[-.05em]"
+          className="font-display text-[clamp(40px,8vw,140px)] font-semibold leading-none tracking-tighter"
         >
           <span data-ln className={lineClass}>
             <span className="block">I’m building toward</span>
@@ -369,7 +367,7 @@ export function AboutPage() {
             <span className="block text-[#777]">something bigger.</span>
           </span>
         </h2>
-        <ol className="mt-[100px] max-[767px]:mt-16">
+        <ol className="mt-25 max-[767px]:mt-16">
           {directions.map((item) => (
             <li
               data-dir
@@ -387,7 +385,7 @@ export function AboutPage() {
               >
                 {item.title}
               </h3>
-              <p data-dir-text className={`max-w-[420px] ${mutedText}`}>
+              <p data-dir-text className={`max-w-105 ${mutedText}`}>
                 {item.description}
               </p>
             </li>
@@ -399,12 +397,12 @@ export function AboutPage() {
         id="end"
         data-end
         aria-label="Closing"
-        className={`relative flex min-h-screen flex-col justify-end gap-14 overflow-hidden border-t border-line pb-[72px] pt-[140px] ${pad}`}
+        className={`relative flex min-h-screen flex-col justify-end gap-14 overflow-hidden border-t border-line pb-18 pt-35 ${pad}`}
       >
         <div
           data-glow
           aria-hidden="true"
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_100%,rgb(70_100_170_/_32%),transparent_70%)]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_55%_at_50%_100%,rgb(70_100_170/32%),transparent_70%)]"
         />
         <h2
           data-big

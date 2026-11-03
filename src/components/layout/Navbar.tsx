@@ -37,7 +37,7 @@ export function Navbar({ page = "home" }: NavbarProps) {
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 flex h-[calc(72px+env(safe-area-inset-top,0px))] items-center justify-between border-b pt-[env(safe-area-inset-top,0px)] px-[clamp(20px,4.5vw,64px)] transition-[background-color,border-color] duration-[400ms] motion-safe:animate-[header-in_.8s_ease-out_both] ${isSolid ? "border-line bg-[rgb(8_8_8_/_85%)] backdrop-blur-[8px]" : "border-transparent"}`}
+      className={`fixed inset-x-0 top-0 z-50 flex h-[calc(72px+env(safe-area-inset-top,0px))] items-center justify-between border-b pt-[env(safe-area-inset-top,0px)] px-[clamp(20px,4.5vw,64px)] transition-[background-color,border-color] duration-400 motion-safe:animate-[header-in_.8s_ease-out_both] ${isSolid ? "border-line bg-[rgb(8_8_8/85%)] backdrop-blur-sm" : "border-transparent"}`}
     >
       <a
         className="font-brand text-[18px] font-extrabold tracking-[.04em]"
