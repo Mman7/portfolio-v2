@@ -47,10 +47,15 @@ export function StarfieldIntro() {
       root.style.touchAction = "none";
     };
 
+    let seen = false;
+    try {
+      seen = sessionStorage.getItem(SEEN_KEY) === "1";
+    } catch {}
+
     const reduced = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
-    if (reduced) {
+    if (reduced || seen) {
       finalize();
       announceExit();
       return;
@@ -68,11 +73,6 @@ export function StarfieldIntro() {
 
     if ("scrollRestoration" in history) history.scrollRestoration = "manual";
     window.scrollTo(0, 0);
-
-    let seen = false;
-    try {
-      seen = sessionStorage.getItem(SEEN_KEY) === "1";
-    } catch {}
 
     let exiting = false;
     let exited = false;
@@ -212,48 +212,42 @@ export function StarfieldIntro() {
 
     // Stars light up with real load progress; 6s fallback so it never hangs
     let tick: (() => void) | null = null;
-    let fallback: ReturnType<typeof setTimeout> | undefined;
-    if (seen) {
-      field.reveal(1);
-      finishLoading(0);
-    } else {
-      field.reveal(0);
-      let target = 0.4;
-      let shown = 0;
-      const done = { fonts: false, load: false };
-      const setTarget = () => {
-        target = 0.4 + (done.fonts ? 0.3 : 0) + (done.load ? 0.3 : 0);
-      };
-      document.fonts?.ready.then(() => {
-        done.fonts = true;
-        setTarget();
-      });
-      const onLoad = () => {
-        done.load = true;
-        setTarget();
-      };
-      if (document.readyState === "complete") done.load = true;
-      else window.addEventListener("load", onLoad, { once: true });
-      fallback = setTimeout(() => {
-        done.fonts = done.load = true;
-        setTarget();
-      }, 6000);
-      const t0 = performance.now();
-      const MIN = 2.2;
-      tick = () => {
-        const t = Math.min(1, (performance.now() - t0) / 1000 / MIN);
-        const cap = Math.min(1 - Math.pow(1 - t, 2), target);
-        shown += (cap - shown) * 0.12;
-        field.reveal(Math.min(shown, 1));
-        if (t >= 1 && target >= 1 && shown > 0.995) {
-          gsap.ticker.remove(tick!);
-          tick = null;
-          field.reveal(1);
-          finishLoading(0.35);
-        }
-      };
-      gsap.ticker.add(tick);
-    }
+    field.reveal(0);
+    let target = 0.4;
+    let shown = 0;
+    const done = { fonts: false, load: false };
+    const setTarget = () => {
+      target = 0.4 + (done.fonts ? 0.3 : 0) + (done.load ? 0.3 : 0);
+    };
+    document.fonts?.ready.then(() => {
+      done.fonts = true;
+      setTarget();
+    });
+    const onLoad = () => {
+      done.load = true;
+      setTarget();
+    };
+    if (document.readyState === "complete") done.load = true;
+    else window.addEventListener("load", onLoad, { once: true });
+    const fallback = setTimeout(() => {
+      done.fonts = done.load = true;
+      setTarget();
+    }, 6000);
+    const t0 = performance.now();
+    const MIN = 2.2;
+    tick = () => {
+      const t = Math.min(1, (performance.now() - t0) / 1000 / MIN);
+      const cap = Math.min(1 - Math.pow(1 - t, 2), target);
+      shown += (cap - shown) * 0.12;
+      field.reveal(Math.min(shown, 1));
+      if (t >= 1 && target >= 1 && shown > 0.995) {
+        gsap.ticker.remove(tick!);
+        tick = null;
+        field.reveal(1);
+        finishLoading(0.35);
+      }
+    };
+    gsap.ticker.add(tick);
 
     function teardown() {
       document.documentElement.style.overflow = "";

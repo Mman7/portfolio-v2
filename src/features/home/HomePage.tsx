@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import type { FormEvent } from "react";
 import { useRef, useState } from "react";
 import type { BioPart } from "./data";
@@ -175,7 +176,7 @@ export function HomePage() {
             >
               <div
                 data-mf
-                className={`relative aspect-[16/10] w-[66%] overflow-hidden border border-[#222] bg-[#111] [grid-area:1/1] max-[767px]:w-full ${reverse ? "justify-self-end" : "justify-self-start"}`}
+                className={`relative aspect-[16/10] w-[66%] overflow-hidden border border-[#222] bg-[#111] [grid-area:1/1] max-[767px]:w-full max-[767px]:aspect-[2/1] ${reverse ? "justify-self-end" : "justify-self-start"}`}
               >
                 <div
                   data-mi
@@ -184,7 +185,30 @@ export function HomePage() {
                     background: `radial-gradient(ellipse 70% 70% at ${25 + index * 25}% ${80 - index * 20}%, rgba(70,100,170,.42), transparent 70%), linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px)`,
                     backgroundSize: "auto, 48px 48px, 48px 48px",
                   }}
-                />
+                >
+                  {project.video && (
+                    <video
+                      src={project.video}
+                      poster={project.img}
+                      aria-label={`${project.name} showcase video`}
+                      className="absolute inset-0 h-full w-full object-contain"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                      preload="metadata"
+                    />
+                  )}
+                  {!project.video && project.img && (
+                    <Image
+                      src={project.img}
+                      alt={`${project.name} screenshot`}
+                      fill
+                      sizes="(min-width: 768px) 66vw, 100vw"
+                      className="object-cover"
+                    />
+                  )}
+                </div>
               </div>
               <div
                 className={`pointer-events-none relative z-[1] translate-y-[22%] self-end [grid-area:1/1] max-[767px]:mt-5 max-[767px]:translate-y-0 max-[767px]:!justify-self-start max-[767px]:[grid-area:2/1] ${reverse ? "justify-self-start" : "justify-self-end"}`}

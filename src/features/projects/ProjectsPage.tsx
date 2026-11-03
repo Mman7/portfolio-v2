@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { Code, Globe } from "lucide-react";
 import { useRef } from "react";
 import { contact, projects } from "@/features/home/data";
 import {
@@ -86,7 +87,7 @@ export function ProjectsPage() {
         style={{ height: `${projects.length * 160}svh` }}
       >
         <div
-          className={`sticky top-0 flex h-svh items-center overflow-hidden ${pad} max-[767px]:items-start max-[767px]:pt-[14vh] motion-reduce:relative motion-reduce:h-auto motion-reduce:py-[100px]`}
+          className={`sticky top-0 flex h-svh items-center overflow-hidden ${pad} max-[767px]:items-start max-[767px]:pt-[max(10vh,5.5rem)] motion-reduce:relative motion-reduce:h-auto motion-reduce:py-[100px]`}
         >
           <div className="grid w-full grid-cols-[auto_minmax(0,1fr)_minmax(0,1.1fr)] items-center gap-[clamp(28px,4vw,72px)] max-[767px]:grid-cols-1 max-[767px]:gap-6 motion-reduce:gap-12">
             <nav
@@ -115,7 +116,7 @@ export function ProjectsPage() {
               ))}
             </nav>
 
-            <div className="grid">
+            <div className="grid max-[767px]:order-3">
               {projects.map((project) => (
                 <div
                   key={project.name}
@@ -134,7 +135,7 @@ export function ProjectsPage() {
                     {project.summary ?? project.description}
                   </p>
                   {project.stack && (
-                    <p className="mt-6 font-mono text-xs tracking-[.08em] text-muted uppercase">
+                    <p className="mt-6 font-mono text-xs tracking-[.08em] text-muted uppercase [@media(max-height:700px)]:hidden">
                       {project.stack.join(" / ")}
                     </p>
                   )}
@@ -159,22 +160,34 @@ export function ProjectsPage() {
                     </Link>
                     {project.repoUrl && (
                       <a
-                        className={btn}
+                        className={`${btn} max-[767px]:w-12 max-[767px]:px-0`}
                         href={project.repoUrl}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={`${project.name} repository`}
                       >
-                        Github ↗
+                        <Code
+                          size={18}
+                          aria-hidden="true"
+                          className="hidden max-[767px]:block"
+                        />
+                        <span className="max-[767px]:hidden">Github ↗</span>
                       </a>
                     )}
                     {project.liveUrl && (
                       <a
-                        className={btn}
+                        className={`${btn} max-[767px]:w-12 max-[767px]:px-0`}
                         href={project.liveUrl}
                         target="_blank"
                         rel="noopener noreferrer"
+                        aria-label={`${project.name} live site`}
                       >
-                        Live ↗
+                        <Globe
+                          size={18}
+                          aria-hidden="true"
+                          className="hidden max-[767px]:block"
+                        />
+                        <span className="max-[767px]:hidden">Live ↗</span>
                       </a>
                     )}
                   </div>
@@ -182,8 +195,8 @@ export function ProjectsPage() {
               ))}
             </div>
 
-            <div className="flex flex-col gap-4">
-              <div className="relative aspect-[16/10] w-full max-[767px]:aspect-[16/9] motion-reduce:flex motion-reduce:aspect-auto motion-reduce:flex-col motion-reduce:gap-6">
+            <div className="flex flex-col gap-4 max-[767px]:order-2">
+              <div className="relative aspect-[16/10] w-full max-[767px]:aspect-[2/1] motion-reduce:flex motion-reduce:aspect-auto motion-reduce:flex-col motion-reduce:gap-6">
                 {projects.map((project, index) => (
                   <div
                     key={project.name}
@@ -192,17 +205,39 @@ export function ProjectsPage() {
                   >
                     <div
                       data-sc-art
-                      className="absolute -inset-[8%]"
-                      style={project.img ? undefined : frameArt(index)}
+                      className={
+                        project.video
+                          ? "absolute inset-0"
+                          : "absolute -inset-[8%]"
+                      }
+                      style={
+                        project.img || project.video
+                          ? undefined
+                          : frameArt(index)
+                      }
                     >
-                      {project.img && (
-                        <Image
-                          src={project.img}
-                          alt={`${project.name} screenshot`}
-                          fill
-                          sizes="(min-width: 768px) 50vw, 100vw"
-                          className="object-cover"
+                      {project.video ? (
+                        <video
+                          src={project.video}
+                          poster={project.img}
+                          aria-label={`${project.name} showcase video`}
+                          className="absolute inset-0 h-full w-full object-contain"
+                          autoPlay
+                          muted
+                          loop
+                          playsInline
+                          preload="metadata"
                         />
+                      ) : (
+                        project.img && (
+                          <Image
+                            src={project.img}
+                            alt={`${project.name} screenshot`}
+                            fill
+                            sizes="(min-width: 768px) 50vw, 100vw"
+                            className="object-cover"
+                          />
+                        )
                       )}
                     </div>
                   </div>

@@ -7,6 +7,7 @@ export type Project = {
   highlights?: string[];
   featured?: boolean;
   img?: string;
+  video?: string;
   repoUrl?: string;
   liveUrl?: string;
 };
@@ -52,6 +53,7 @@ export const projects: Project[] = [
     ],
     featured: true,
     img: "https://images.pexels.com/photos/34169628/pexels-photo-34169628.jpeg",
+    video: "/project_showcase/vid/e-commerce_showcase_vid.mp4",
   },
   {
     name: "PocketTogether",
@@ -79,6 +81,7 @@ export const projects: Project[] = [
       "Room activity page",
     ],
     featured: true,
+    video: "/project_showcase/vid/pocket_together_showcase_vid.mp4",
   },
   {
     name: "QuizThis",
@@ -87,7 +90,11 @@ export const projects: Project[] = [
       "An interactive quiz application focused on programming knowledge.",
     status: "Completed",
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
+    img: "/project_showcase/img/quiz_app.png",
+    video: "/project_showcase/vid/Quiz This Showcase Vid.mp4",
     featured: true,
+    liveUrl: "/project_showcase/Quiz This Live Url",
+    repoUrl: "/project_showcase/Quiz This Live Url",
   },
   {
     name: "Notely",
@@ -96,6 +103,7 @@ export const projects: Project[] = [
       "A note-taking application for creating and managing notes with rich-text editing.",
     status: "Completed",
     stack: ["Flutter", "Dart", "Local storage", "Rich-text editing"],
+    video: "/project_showcase/vid/Notely Showcase Vid.mp4",
   },
   {
     name: "Pokémon Index",
@@ -104,18 +112,23 @@ export const projects: Project[] = [
       "A Pokémon information application that retrieves and displays data from an external API.",
     status: "Completed",
     stack: ["React", "External API integration", "TanStack Query"],
+    img: "/project_showcase/img/pokedex.png",
+    video: "/project_showcase/vid/Pokemon Index Showcase Vid.mp4",
   },
   {
     name: "Tomato Clock",
     description: "Pomodoro timer",
     summary: "A productivity application based on the Pomodoro technique.",
     status: "Completed",
+    img: "/project_showcase/img/tomato_count.png",
     stack: ["Flutter", "Dart", "Timer functionality", "Local notifications"],
   },
   {
     name: "JKLM Clone",
     description: "Web game",
     status: "Built",
+    img: "/project_showcase/img/jklm_showcase.jpg",
+    video: "/project_showcase/vid/Jklm Showcase Vid.mp4",
   },
   {
     name: "Developer Portfolio",
