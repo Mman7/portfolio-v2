@@ -16,8 +16,6 @@ export type BioPart = {
   text: string;
   strong?: boolean;
 };
-// TODO add the img src
-// TODO add repoUrl and liveUrl to projects where applicable
 export const projects: Project[] = [
   {
     name: "Komorebi",
@@ -52,8 +50,8 @@ export const projects: Project[] = [
       "Customer and inventory management",
     ],
     featured: true,
-    img: "https://images.pexels.com/photos/34169628/pexels-photo-34169628.jpeg",
-    video: "/project_showcase/vid/e-commerce_showcase_vid.mp4",
+    video: "https://assets.ericman.dev/e-commerce_showcase_vid.mp4",
+    repoUrl: "https://github.com/Mman7/mini-ecommerce",
   },
   {
     name: "PocketTogether",
@@ -81,7 +79,7 @@ export const projects: Project[] = [
       "Room activity page",
     ],
     featured: true,
-    video: "/project_showcase/vid/pocket_together_showcase_vid.mp4",
+    video: "https://assets.ericman.dev/pocket_together_showcase_vid.mp4",
   },
   {
     name: "QuizThis",
@@ -91,7 +89,7 @@ export const projects: Project[] = [
     status: "Completed",
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS"],
     img: "/project_showcase/img/quiz_app.png",
-    video: "/project_showcase/vid/Quiz This Showcase Vid.mp4",
+    video: "https://assets.ericman.dev/quiz_this_showcase_vid.mp4",
     featured: true,
     liveUrl: "/project_showcase/Quiz This Live Url",
     repoUrl: "/project_showcase/Quiz This Live Url",
@@ -103,7 +101,7 @@ export const projects: Project[] = [
       "A note-taking application for creating and managing notes with rich-text editing.",
     status: "Completed",
     stack: ["Flutter", "Dart", "Local storage", "Rich-text editing"],
-    video: "/project_showcase/vid/Notely Showcase Vid.mp4",
+    video: "https://assets.ericman.dev/notely_showcase_vid.mp4",
   },
   {
     name: "Pokémon Index",
@@ -113,7 +111,7 @@ export const projects: Project[] = [
     status: "Completed",
     stack: ["React", "External API integration", "TanStack Query"],
     img: "/project_showcase/img/pokedex.png",
-    video: "/project_showcase/vid/Pokemon Index Showcase Vid.mp4",
+    video: "https://assets.ericman.dev/pokemon_index _showcase_vid.mp4",
   },
   {
     name: "Tomato Clock",
@@ -128,7 +126,7 @@ export const projects: Project[] = [
     description: "Web game",
     status: "Built",
     img: "/project_showcase/img/jklm_showcase.jpg",
-    video: "/project_showcase/vid/Jklm Showcase Vid.mp4",
+    video: "https://assets.ericman.dev/jklm_showcase_vid.mp4",
   },
   {
     name: "Developer Portfolio",
@@ -149,6 +147,8 @@ export const projects: Project[] = [
       "Layered backgrounds and parallax effects",
       "Responsive layouts",
     ],
+    repoUrl: "https://github.com/Mman7/portfolio-v2",
+    video: "https://assets.ericman.dev/portfolio_showcase_vid.mp4",
   },
 ];
 

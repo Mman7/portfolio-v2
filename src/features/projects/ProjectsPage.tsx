@@ -13,6 +13,7 @@ import {
   pad,
   section,
 } from "@/lib/styles";
+import { toSlug } from "@/features/project-detail/slug";
 import { beyondPrinciples } from "./data";
 import { useProjectsAnimations } from "./useProjectsAnimations";
 
@@ -25,15 +26,6 @@ function frameArt(index: number) {
     background: `radial-gradient(ellipse 70% 70% at ${25 + step * 25}% ${80 - step * 20}%, rgba(70,100,170,.42), transparent 70%), linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px)`,
     backgroundSize: "auto, 48px 48px, 48px 48px",
   };
-}
-
-function toSlug(name: string) {
-  return name
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
 }
 
 export function ProjectsPage() {

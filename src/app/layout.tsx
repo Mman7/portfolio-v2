@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Mono, Inter, Space_Grotesk, Syne } from "next/font/google";
 import { SmoothScroll } from "@/components/layout/SmoothScroll";
+import { DEFAULT_OG_IMAGE, SITE_NAME, SITE_URL } from "@/lib/site";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -30,9 +31,44 @@ const syne = Syne({
 });
 
 export const metadata: Metadata = {
-  title: "Eric Man | Full-Stack Developer",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Eric Man | Full-Stack Developer",
+    template: "%s | Eric Man",
+  },
   description:
     "Eric Man is an independent developer and product builder turning ideas into real-world products.",
+  keywords: [
+    "Eric Man",
+    "full-stack developer",
+    "web developer",
+    "mobile developer",
+    "Next.js",
+    "React",
+    "Flutter",
+    "Malaysia",
+  ],
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  alternates: { canonical: "/" },
+  robots: { index: true, follow: true },
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    locale: "en_US",
+    url: SITE_URL,
+    title: "Eric Man | Full-Stack Developer",
+    description:
+      "Eric Man is an independent developer and product builder turning ideas into real-world products.",
+    images: [{ url: DEFAULT_OG_IMAGE, alt: "Eric Man" }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Eric Man | Full-Stack Developer",
+    description:
+      "Eric Man is an independent developer and product builder turning ideas into real-world products.",
+    images: [DEFAULT_OG_IMAGE],
+  },
 };
 
 export default function RootLayout({

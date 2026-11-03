@@ -34,10 +34,13 @@ function Video({ className = "" }: { className?: string }) {
       muted
       loop
       playsInline
-      preload="metadata"
+      preload="auto"
       aria-hidden="true"
     >
-      <source src="/about_hero.mp4" type="video/mp4" />
+      <source
+        src="https://assets.ericman.dev/about_hero.mp4"
+        type="video/mp4"
+      />
     </video>
   );
 }

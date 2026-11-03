@@ -125,6 +125,10 @@ export function StarfieldIntro() {
             start: "top top",
             end: "bottom bottom",
             scrub: 1,
+            // Sub-pixel end positions can leave progress just under 1 at max scroll
+            onUpdate: (self) => {
+              if (self.progress >= 0.999) exit();
+            },
             onLeave: holdAtEnd,
           },
         })
@@ -288,7 +292,7 @@ export function StarfieldIntro() {
         data-starfield-intro
         role="region"
         aria-label="Intro animation"
-        className="fixed inset-0 z-[100] overflow-hidden bg-black"
+        className="fixed inset-0 z-100 overflow-hidden bg-black"
       >
         <canvas
           ref={canvasRef}

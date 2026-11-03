@@ -86,14 +86,18 @@ export function HomePage() {
           <div data-hero-bg className="absolute -inset-[4%]">
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_70%_90%,rgb(70_100_170_/_40%),transparent_70%)]" />
             <video
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover md:object-contain"
               autoPlay
               muted
               loop
               playsInline
+              preload="auto"
               aria-hidden="true"
             >
-              <source src="/hero_bg_video.mp4" type="video/mp4" />
+              <source
+                src="https://assets.ericman.dev/hero_bg_video.mp4"
+                type="video/mp4"
+              />
             </video>
           </div>
           <div
@@ -180,7 +184,7 @@ export function HomePage() {
               >
                 <div
                   data-mi
-                  className="absolute -inset-y-[10%] inset-x-0 transition-[filter] duration-500 group-hover:brightness-125"
+                  className="absolute -inset-y-[10%] inset-x-0"
                   style={{
                     background: `radial-gradient(ellipse 70% 70% at ${25 + index * 25}% ${80 - index * 20}%, rgba(70,100,170,.42), transparent 70%), linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px)`,
                     backgroundSize: "auto, 48px 48px, 48px 48px",
