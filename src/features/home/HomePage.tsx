@@ -15,6 +15,7 @@ import {
 } from "./data";
 import { useHomeAnimations } from "./useHomeAnimations";
 import { WhatIBuild } from "./WhatIBuild";
+import { submitNetlifyForm } from "@/lib/netlifyForm";
 
 const pad = "px-[clamp(20px,4.5vw,64px)]";
 const section = `${pad} py-[140px] max-[767px]:py-24`;
@@ -56,9 +57,10 @@ function Words({ parts }: { parts: BioPart[] }) {
 export function HomePage() {
   const pageRef = useRef<HTMLElement>(null);
   const [formStatus, setFormStatus] = useState("");
+  const [sending, setSending] = useState(false);
   useHomeAnimations(pageRef);
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     const form = event.currentTarget;
     if (!form.checkValidity()) {
@@ -67,11 +69,22 @@ export function HomePage() {
       return;
     }
     const data = new FormData(form);
-    const name = String(data.get("name") ?? "");
-    const email = String(data.get("email") ?? "");
-    const message = String(data.get("message") ?? "");
-    setFormStatus("Opening your email app…");
-    window.location.href = `mailto:${contact.email}?subject=${encodeURIComponent(`Hello from ${name}`)}&body=${encodeURIComponent(`${message}\n\n${email}`)}`;
+    setSending(true);
+    setFormStatus("Sending…");
+    try {
+      await submitNetlifyForm("home-contact", {
+        name: String(data.get("name") ?? ""),
+        email: String(data.get("email") ?? ""),
+        message: String(data.get("message") ?? ""),
+        "bot-field": String(data.get("bot-field") ?? ""),
+      });
+      form.reset();
+      setFormStatus("Thanks, your message was sent.");
+    } catch {
+      setFormStatus("Your message wasn’t sent. Try again.");
+    } finally {
+      setSending(false);
+    }
   }
 
   return (
@@ -531,6 +544,13 @@ export function HomePage() {
             onSubmit={handleSubmit}
             className="flex flex-col gap-[18px]"
           >
+            <input
+              name="bot-field"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+              className="absolute -left-[9999px] size-px opacity-0"
+            />
             <label className={fieldLabel}>
               Name
               <input
@@ -559,8 +579,12 @@ export function HomePage() {
                 className={`${fieldInput} resize-none`}
               />
             </label>
-            <button type="submit" className={`${btn} ${btnPrimary} self-start`}>
-              Send Message
+            <button
+              type="submit"
+              disabled={sending}
+              className={`${btn} ${btnPrimary} self-start disabled:cursor-progress disabled:opacity-60`}
+            >
+              {sending ? "Sending…" : "Send Message"}
             </button>
             <p
               role="status"

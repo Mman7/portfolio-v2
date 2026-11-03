@@ -12,6 +12,7 @@ import {
   validateContact,
 } from "./validate";
 import { useContactAnimations } from "./useContactAnimations";
+import { submitNetlifyForm } from "@/lib/netlifyForm";
 
 type Status = { kind: "idle" | "sending" | "sent" | "error"; message: string };
 
@@ -71,20 +72,10 @@ export function ContactPage() {
 
     setStatus({ kind: "sending", message: "" });
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...values, website: data.get("website") }),
+      await submitNetlifyForm("contact", {
+        ...values,
+        "bot-field": String(data.get("bot-field") ?? ""),
       });
-      if (response.status === 503) {
-        setStatus({
-          kind: "error",
-          message:
-            "The form isn’t connected to an email service yet, so nothing was sent.",
-        });
-        return;
-      }
-      if (!response.ok) throw new Error(String(response.status));
       form.reset();
       setStatus({
         kind: "sent",
@@ -235,7 +226,7 @@ export function ContactPage() {
               );
             })}
             <input
-              name="website"
+              name="bot-field"
               tabIndex={-1}
               autoComplete="off"
               aria-hidden="true"

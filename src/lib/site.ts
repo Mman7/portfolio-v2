@@ -15,7 +15,7 @@ export function pageMetadata({
 }): Metadata {
   const fullTitle = `${title} | ${SITE_NAME}`;
   return {
-    title,
+    title: { absolute: fullTitle },
     description,
     alternates: { canonical: path },
     openGraph: {
