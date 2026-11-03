@@ -80,6 +80,7 @@ export const projects: Project[] = [
     ],
     featured: true,
     video: "https://assets.ericman.dev/pocket_together_showcase_vid.mp4",
+    repoUrl: "https://github.com/Mman7/PocketTogether",
   },
   {
     name: "QuizThis",
@@ -91,8 +92,8 @@ export const projects: Project[] = [
     img: "/project_showcase/img/quiz_app.png",
     video: "https://assets.ericman.dev/quiz_this_showcase_vid.mp4",
     featured: true,
-    liveUrl: "/project_showcase/Quiz This Live Url",
-    repoUrl: "/project_showcase/Quiz This Live Url",
+    liveUrl: "https://quiz-this.netlify.app/",
+    repoUrl: "https://github.com/Mman7/programmer-quiz",
   },
   {
     name: "Notely",
@@ -102,6 +103,7 @@ export const projects: Project[] = [
     status: "Completed",
     stack: ["Flutter", "Dart", "Local storage", "Rich-text editing"],
     video: "https://assets.ericman.dev/notely_showcase_vid.mp4",
+    repoUrl: "https://github.com/Mman7/notely",
   },
   {
     name: "Pokémon Index",
@@ -112,6 +114,8 @@ export const projects: Project[] = [
     stack: ["React", "External API integration", "TanStack Query"],
     img: "/project_showcase/img/pokedex.png",
     video: "https://assets.ericman.dev/pokemon_index _showcase_vid.mp4",
+    repoUrl: "https://github.com/Mman7/pokemon_index",
+    liveUrl: "https://pokedex-db.netlify.app/",
   },
   {
     name: "Tomato Clock",
@@ -120,6 +124,7 @@ export const projects: Project[] = [
     status: "Completed",
     img: "/project_showcase/img/tomato_count.png",
     stack: ["Flutter", "Dart", "Timer functionality", "Local notifications"],
+    repoUrl: "https://github.com/Mman7/tomato_clock",
   },
   {
     name: "JKLM Clone",
@@ -127,6 +132,8 @@ export const projects: Project[] = [
     status: "Built",
     img: "/project_showcase/img/jklm_showcase.jpg",
     video: "https://assets.ericman.dev/jklm_showcase_vid.mp4",
+    repoUrl: "https://github.com/Mman7/jklm",
+    liveUrl: "https://jklm-custom.netlify.app/",
   },
   {
     name: "Developer Portfolio",
@@ -148,6 +155,7 @@ export const projects: Project[] = [
       "Responsive layouts",
     ],
     repoUrl: "https://github.com/Mman7/portfolio-v2",
+    liveUrl: "https://www.ericman.dev",
     video: "https://assets.ericman.dev/portfolio_showcase_vid.mp4",
   },
 ];
