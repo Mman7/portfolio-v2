@@ -14,6 +14,7 @@ import {
   section,
 } from "@/lib/styles";
 import { toSlug } from "@/features/project-detail/slug";
+import { scrollToSection } from "@/lib/smoothScroll";
 import { beyondPrinciples } from "./data";
 import { useProjectsAnimations } from "./useProjectsAnimations";
 
@@ -55,7 +56,11 @@ export function ProjectsPage() {
             </span>
           </h1>
           <div data-hero-cta className="flex flex-wrap gap-3">
-            <a className={`${btn} ${btnPrimary}`} href="#showcase">
+            <a
+              className={`${btn} ${btnPrimary}`}
+              href="#showcase"
+              onClick={(event) => scrollToSection(event, "showcase")}
+            >
               View Projects ↓
             </a>
             <Link className={btn} href="/contact">

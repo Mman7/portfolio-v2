@@ -16,6 +16,7 @@ import {
 import { useHomeAnimations } from "./useHomeAnimations";
 import { WhatIBuild } from "./WhatIBuild";
 import { submitNetlifyForm } from "@/lib/netlifyForm";
+import { scrollToSection } from "@/lib/smoothScroll";
 
 const pad = "px-[clamp(20px,4.5vw,64px)]";
 const section = `${pad} py-[140px] max-[767px]:py-24`;
@@ -128,10 +129,18 @@ export function HomePage() {
             </span>
           </h1>
           <div data-hero-cta className="flex flex-wrap gap-3">
-            <a className={`${btn} ${btnPrimary}`} href="#work">
+            <a
+              className={`${btn} ${btnPrimary}`}
+              href="#work"
+              onClick={(event) => scrollToSection(event, "work")}
+            >
               Explore My Work ↗
             </a>
-            <a className={btn} href="#contact">
+            <a
+              className={btn}
+              href="#contact"
+              onClick={(event) => scrollToSection(event, "contact")}
+            >
               Get in Touch ↗
             </a>
           </div>
