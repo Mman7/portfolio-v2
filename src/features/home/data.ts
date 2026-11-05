@@ -206,7 +206,7 @@ export const howIWork = [
 
 export const bio: BioPart[] = [
   { text: "I’m a " },
-  { text: "self-taught full-stack developer", strong: true },
+  { text: "self-taught full stack developer", strong: true },
   { text: " based in " },
   { text: "Malaysia", strong: true },
   {
